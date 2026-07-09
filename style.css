@@ -1,0 +1,230 @@
+/* ===== Sarkari Sahayak — Design Tokens =====
+   Color:
+   --navy    #1B3A5C  primary / headers / trust
+   --saffron #E2903A  accent / CTA / stamps
+   --cream   #FBF7EE  page background
+   --paper   #F1E9D8  card background (aged paper)
+   --ink     #26241F  body text
+   --green   #2F6B4F  verified / success
+
+   Type:
+   Display : 'Baloo 2'      (sturdy, warm, strong Devanagari support)
+   Body    : 'Hind'         (clean official Devanagari sans)
+   Utility : 'JetBrains Mono' (reference numbers, dates, codes)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Hind:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root{
+  --navy:#1B3A5C;
+  --navy-dark:#122840;
+  --saffron:#E2903A;
+  --cream:#FBF7EE;
+  --paper:#F1E9D8;
+  --ink:#26241F;
+  --green:#2F6B4F;
+  --line:#D9CDAE;
+  --radius:14px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Hind',sans-serif;
+  font-size:17px;
+  line-height:1.65;
+}
+h1,h2,h3,.display{
+  font-family:'Baloo 2',sans-serif;
+  color:var(--navy);
+  margin:0 0 .4em;
+  line-height:1.2;
+}
+.mono{
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.02em;
+}
+a{color:var(--navy);}
+img{max-width:100%;display:block;}
+
+/* Tricolor hairline — subtle, load-bearing not decorative: signals "official" register once, at the very top */
+.tricolor-bar{height:4px;width:100%;background:linear-gradient(90deg,#E2903A 0 33%,#FBF7EE 33% 66%,#2F6B4F 66% 100%);}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+/* ---------- Header ---------- */
+header.site{
+  background:var(--navy);
+  color:#fff;
+  padding:18px 0;
+}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;}
+.brand-mark{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--saffron);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Baloo 2';font-weight:800;color:var(--navy-dark);font-size:20px;
+  flex-shrink:0;
+}
+.brand-text .name{font-family:'Baloo 2';font-weight:700;font-size:20px;display:block;}
+.brand-text .tag{font-size:13px;opacity:.85;}
+nav.main a{
+  color:#fff;text-decoration:none;font-weight:600;margin-left:24px;font-size:15px;
+  border-bottom:2px solid transparent;padding-bottom:2px;
+}
+nav.main a:hover{border-bottom-color:var(--saffron);}
+
+/* ---------- Hero: service-window signboard ---------- */
+.hero{
+  background:var(--navy);
+  color:#fff;
+  padding:64px 0 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;}
+.hero h1{color:#fff;font-size:clamp(30px,4.2vw,46px);margin-bottom:.3em;}
+.hero p.lead{font-size:18px;opacity:.9;max-width:46ch;margin-bottom:1.6em;}
+.hero .cta{
+  display:inline-block;background:var(--saffron);color:var(--navy-dark);
+  font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;
+  font-size:15px;
+}
+.hero .cta:hover{background:#f0a555;}
+
+/* Seal — signature element: a stamped "verified" seal used at trust moments */
+.seal{
+  width:150px;height:150px;border-radius:50%;
+  border:3px solid var(--saffron);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  transform:rotate(-9deg);
+  margin:0 auto;
+  position:relative;
+}
+.seal::before{
+  content:'';position:absolute;inset:8px;border:1px dashed rgba(226,144,58,.6);border-radius:50%;
+}
+.seal .seal-text{
+  font-family:'Baloo 2';font-weight:700;color:var(--saffron);font-size:15px;line-height:1.3;
+}
+
+/* ---------- Section shell ---------- */
+section{padding:60px 0;}
+section .eyebrow{
+  font-family:'JetBrains Mono';font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--saffron);font-weight:600;margin-bottom:6px;display:block;
+}
+section h2{font-size:clamp(24px,3vw,32px);}
+section .section-sub{color:#5b5646;max-width:60ch;margin-bottom:2.2em;}
+
+/* ---------- Ticket / permit cards (used for guides & schemes) ----------
+   Perforated dashed edge + notch = "counter ticket" metaphor: this content
+   is something you take away and use, like a form you're issued. */
+.ticket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;}
+.ticket{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px 22px 20px;
+  position:relative;
+  text-decoration:none;
+  color:var(--ink);
+  display:block;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.ticket:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(27,58,92,.12);}
+.ticket::after{
+  content:'';
+  position:absolute;left:22px;right:22px;bottom:52px;
+  border-top:1.5px dashed var(--line);
+}
+.ticket .cat{
+  font-family:'JetBrains Mono';font-size:11.5px;color:var(--green);font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.ticket h3{font-size:20px;margin:8px 0 10px;}
+.ticket p{font-size:14.5px;color:#5b5646;margin:0 0 26px;}
+.ticket .meta{
+  font-family:'JetBrains Mono';font-size:12px;color:var(--navy);opacity:.75;
+  display:flex;justify-content:space-between;
+}
+
+/* ---------- Steps (used inside guide posts) ---------- */
+.steps{counter-reset:step;list-style:none;padding:0;margin:0;}
+.steps li{
+  counter-increment:step;
+  display:grid;grid-template-columns:44px 1fr;gap:16px;
+  padding:18px 0;border-bottom:1px solid var(--line);
+}
+.steps li:last-child{border-bottom:none;}
+.steps li::before{
+  content:counter(step);
+  font-family:'Baloo 2';font-weight:700;color:#fff;background:var(--navy);
+  width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:17px;
+}
+.steps h4{margin:0 0 4px;font-family:'Hind';font-weight:700;font-size:16.5px;color:var(--navy);}
+.steps p{margin:0;color:#4a4636;font-size:15px;}
+
+/* ---------- Verified note ---------- */
+.verified-note{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#EAF2ED;border:1px solid #cfe3d7;border-radius:var(--radius);
+  padding:18px 20px;margin:28px 0;
+}
+.verified-note .dot{
+  width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;
+}
+.verified-note p{margin:0;font-size:14.5px;color:#2c4a3a;}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy-dark);color:#cfd8e2;padding:44px 0 26px;margin-top:40px;}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;}
+footer h4{color:#fff;font-family:'Baloo 2';font-size:16px;margin-bottom:12px;}
+footer a{color:#cfd8e2;text-decoration:none;display:block;margin-bottom:8px;font-size:14.5px;}
+footer a:hover{color:var(--saffron);}
+footer .bottom{
+  border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-top:18px;
+  font-size:13px;opacity:.7;
+}
+
+/* ---------- Article page ---------- */
+.article-head{background:var(--paper);padding:44px 0 36px;border-bottom:1px solid var(--line);}
+.article-head .cat{font-family:'JetBrains Mono';font-size:12px;color:var(--green);font-weight:600;text-transform:uppercase;}
+.article-head h1{font-size:clamp(26px,4vw,38px);margin:10px 0 12px;}
+.article-head .byline{font-family:'JetBrains Mono';font-size:13px;color:#5b5646;}
+article.content{max-width:720px;margin:0 auto;padding:44px 24px;}
+article.content h2{margin-top:1.4em;}
+article.content p{margin:0 0 1.2em;}
+.doc-box{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;margin:24px 0;
+}
+.doc-box h4{margin:0 0 10px;font-family:'Baloo 2';color:var(--navy);font-size:16px;}
+.doc-box ul{margin:0;padding-left:20px;}
+.doc-box li{margin-bottom:6px;font-size:15px;}
+
+/* ---------- Simple page (about/contact/privacy) ---------- */
+.simple-page{max-width:760px;margin:0 auto;padding:56px 24px;}
+.simple-page h1{font-size:clamp(26px,4vw,36px);}
+
+/* ---------- Responsive ---------- */
+@media (max-width:800px){
+  .hero .wrap{grid-template-columns:1fr;}
+  .hero .seal{margin-top:20px;}
+  footer .wrap{grid-template-columns:1fr;}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .ticket{transition:none;}
+}
+
+/* Focus visibility */
+a:focus-visible,button:focus-visible{outline:3px solid var(--saffron);outline-offset:2px;}
