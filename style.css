@@ -1,0 +1,81 @@
+/* ===== Sarkari Sahayak — Design Tokens =====
+   Color:
+   --navy    #1B3A5C  primary / headers / trust
+   --saffron #E2903A  accent / CTA / stamps
+   --cream   #FBF7EE  page background
+   --paper   #F1E9D8  card background (aged paper)
+   --ink     #26241F  body text
+   --green   #2F6B4F  verified / success
+
+   Type:
+   Display : 'Baloo 2'      (sturdy, warm, strong Devanagari support)
+   Body    : 'Hind'         (clean official Devanagari sans)
+   Utility : 'JetBrains Mono' (reference numbers, dates, codes)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Hind:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root{
+  --navy:#1B3A5C;
+  --navy-dark:#122840;
+  --saffron:#E2903A;
+  --cream:#FBF7EE;
+  --paper:#F1E9D8;
+  --ink:#26241F;
+  --green:#2F6B4F;
+  --line:#D9CDAE;
+  --radius:14px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Hind',sans-serif;
+  font-size:17px;
+  line-height:1.65;
+}
+h1,h2,h3,.display{
+  font-family:'Baloo 2',sans-serif;
+  color:var(--navy);
+  margin:0 0 .4em;
+  line-height:1.2;
+}
+.mono{
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.02em;
+}
+a{color:var(--navy);}
+img{max-width:100%;display:block;}
+
+.tricolor-bar{height:4px;width:100%;background:linear-gradient(90deg,#E2903A 0 33%,#FBF7EE 33% 66%,#2F6B4F 66% 100%);}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+header.site{
+  background:var(--navy);
+  color:#fff;
+  padding:18px 0;
+}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;}
+.brand-mark{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--saffron);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Baloo 2';font-weight:800;color:var(--navy-dark);font-size:20px;
+  flex-shrink:0;
+}
+.brand-text .name{font-family:'Baloo 2';font-weight:700;font-size:20px;display:block;}
+.brand-text .tag{font-size:13px;opacity:.85;}
+nav.main a{
+  color:#fff;text-decoration:none;font-weight:600;margin-left:24px;font-size:15px;
+  border-bottom:2px solid transparent;padding-bottom:2px;
+}
+nav.main a:hover{border-bottom-color:var(--saffron);}
+
+.hero{
+  background:
+    radial-gradient(600px 300px at 85% -10%, r
